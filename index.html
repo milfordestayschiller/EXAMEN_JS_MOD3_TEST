@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Proyecto</title>
+</head>
+
+<body>
+    <h1 id="titulo">The Great <span id="colorDisplay"></span> Guessing Game</h1>
+    <div id="stripe">
+        <span id="message"></span>
+        <br>
+        <br>
+        <div class="containterReset">
+            <button class="reset" style="text-align:center">Nuevos Colores</button>
+        </div>
+        
+        <div class="containerPlay">
+            <div class="vertical-center">
+                <button id="playAgain" style="display:none" >Play Again?</button>
+                </div>
+        </div>
+      
+
+        <div id="easy">
+            <button>Easy</button>
+
+        </div>
+     
+        <div id="hard" onClick="window.location.reload();">
+            <button>Hard</button>
+
+        </div>
+
+        <div class="container">
+            <div id="primerosTres">
+                <div class="square"> </div>
+                <div class="square"> </div>
+                <div class="square"></div>
+            </div>
+            <div id="ultimosTres">
+                <div class="square"></div>
+                <div class="square"></div>
+                <div class="square"></div>
+            </div>
+        </div>
+
+
+
+        <script src="script.js"></script>
+</body>
+
+</html>
