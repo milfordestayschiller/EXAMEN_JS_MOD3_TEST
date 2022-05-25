@@ -4,7 +4,7 @@ let cuadrados = document.querySelectorAll(".square")
 let message = document.querySelector("#message")
 let reset = document.querySelector("#reset")
 let easy = document.querySelector("#easy")
-
+let resetNew = document.querySelector("#reset2")
 //Funcion de reciclaje (recomendacion de la pauta)
 function requestFunction(params) {
    for (let i = 0; i < cuadrados.length; i++) {
@@ -13,16 +13,13 @@ function requestFunction(params) {
    }
 
 }
-
 requestFunction()
-
 let rgb = document.querySelector("#rgb")
 //Asignacion a PickedColor
 let pickedColor = pickColor()
 //Asignacion al titulo de PickedColor
 rgb.textContent = pickedColor
-
-//Comparacion del valor del click con el color seleccionado por el usuario
+//Comparacion modo Hard
 function comparative(params) {
 
    for (let i = 0; i < cuadrados.length; i++) {
@@ -34,6 +31,7 @@ function comparative(params) {
             rgb.style = `background: ${valorClick.style.backgroundColor} `
             changeColors(valorClick.style.backgroundColor)
             reset.textContent = "Play Again?"
+            
          }
          else {
             console.log("perdio")
@@ -45,7 +43,28 @@ function comparative(params) {
       )
    }
 }
-comparative()
+//Comparacion modo Easy
+function comparative2(params) {
+
+   for (let i = 0; i < 3; i++) {
+      cuadrados[i].addEventListener('click', function (event) {
+         let valorClick = cuadrados[i]
+         if (valorClick.style.backgroundColor == pickedColor) {
+            message.textContent = "Correcto"
+            rgb.style = `background: ${valorClick.style.backgroundColor} `
+            changeColors(valorClick.style.backgroundColor)
+            resetNew.textContent = "Play Again"
+         }
+         else {
+            valorClick.style = "background-color:#232323; transition: 0.5s;"
+            message.textContent = "Intentelo Nuevamente"
+         }
+      }
+
+      )
+   }
+}
+
 //Cambio de colores
 function changeColors(color) {
    for (let i = 0; i < cuadrados.length; i++) {
@@ -101,13 +120,13 @@ function reset2(params) {
       }
    }
    rgb.style.background = "steelblue"
-   reset.textContent = "Nuevos Colores"
-   message.textContent = ""
+ 
 }
 //Resetea los colores, el titulo, se cambian los colores
 function resetear() {
+   comparative()
    reset.addEventListener("click", function (params) {
-      colors = generateRandomColors()
+       colors = generateRandomColors()
       pickedColor = pickColor()
       rgb.textContent = pickedColor
       reset2()
@@ -115,14 +134,28 @@ function resetear() {
 }
 
 resetear()
+
+function resetear2() {
+   comparative()
+   resetNew.addEventListener("click", function (params) {
+       colors = generateRandomColors2()
+      pickedColor = pickColor()
+      rgb.textContent = pickedColor
+      reset2()
+   })
+}
+
+resetear2()
 //Se ocultan los cuadrados al hacer click en easy
 let ocultar = document.getElementById("ocultar")
 //Se invoca a la funcion generateRandomColors2 para que haga un random en las primeras 3 posiciones del arreglo
 easy.addEventListener("click", function (params) {
+   comparative2()
    colors = generateRandomColors2()
    pickedColor = pickColor()
    rgb.textContent = pickedColor
-   reset.textContent = "Nuevos Colores"
+   reset.style = "visibility: hidden"
+   resetNew.style = "visbility: visible"
    reset2()
    for (let i = 0; i < cuadrados.length - 3; i++) {
       if (cuadrados[i]) {
@@ -130,9 +163,5 @@ easy.addEventListener("click", function (params) {
          cuadrados[i].style.background = colors[i]
 
       }
-      else {
-         console.log("fuera de rango")
-      }
-   }
+     }
 })
-
