@@ -10,48 +10,24 @@
 </head>
 
 <body>
-    <h1 id="titulo">The Great <span id="colorDisplay"></span> Guessing Game</h1>
+    <h1 id="rgb">The Great <span id="#colorDisplay">rgb </span>Guessing Game</h1>
     <div id="stripe">
+        <button id="reset">Nuevos Colores</button>
         <span id="message"></span>
-        <br>
-        <br>
-        <div class="containterReset">
-            <button class="reset" style="text-align:center">Nuevos Colores</button>
-        </div>
-        
-        <div class="containerPlay">
-            <div class="vertical-center">
-                <button id="playAgain" style="display:none" >Play Again?</button>
-                </div>
-        </div>
-      
+        <button id="easy">Easy</button>
+        <button class="selected">Hard</button>
+    </div>
+    <div class="container">
 
-        <div id="easy">
-            <button>Easy</button>
+        <div class="square"> </div>
+        <div class="square"> </div>
+        <div class="square"></div>
 
-        </div>
-     
-        <div id="hard" onClick="window.location.reload();">
-            <button>Hard</button>
-
-        </div>
-
-        <div class="container">
-            <div id="primerosTres">
-                <div class="square"> </div>
-                <div class="square"> </div>
-                <div class="square"></div>
-            </div>
-            <div id="ultimosTres">
-                <div class="square"></div>
-                <div class="square"></div>
-                <div class="square"></div>
-            </div>
-        </div>
-
-
-
-        <script src="script.js"></script>
+        <div class="square"></div>
+        <div class="square"></div>
+        <div class="square"></div>
+    </div>
+ <script src="script.js"></script>
 </body>
 
 </html>
