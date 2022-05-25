@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
@@ -10,24 +10,25 @@
 </head>
 
 <body>
-    <h1 id="rgb">The Great <span id="#colorDisplay">rgb </span>Guessing Game</h1>
+    <h1 id="rgb">The Great <span id="#colorDisplay">RGB</span>Guessing Game</h1>
     <div id="stripe">
         <button id="reset">Nuevos Colores</button>
         <span id="message"></span>
         <button id="easy">Easy</button>
-        <button class="selected">Hard</button>
+        <button class="selected" onClick="window.location.reload();">Hard</button>
     </div>
     <div class="container">
 
         <div class="square"> </div>
         <div class="square"> </div>
         <div class="square"></div>
-
-        <div class="square"></div>
-        <div class="square"></div>
-        <div class="square"></div>
+        <div id="ocultar">
+            <div class="square"></div>
+            <div class="square"></div>
+            <div class="square"></div>
+        </div>
     </div>
- <script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
 
 </html>

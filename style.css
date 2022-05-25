@@ -4,9 +4,8 @@
     height: 0%;
     padding-bottom: 30%;
     background: red;
-   margin : 5px;
-   
-
+    margin: 5px;
+    border-radius: 20px;
 }
 
 .container {
@@ -19,7 +18,8 @@ body {
 }
 
 h1 {
-    color: white
+    color: white;
+    text-align: center;
 }
 
 #message {
@@ -30,5 +30,15 @@ h1 {
     outline: none;
     color: red;
     background: black;
-      
+
+}
+
+#stripe {
+    text-align: center;
+}
+
+#rgb {
+    color: white;
+    padding: 40px;
+    background-color: #4682b4
 }

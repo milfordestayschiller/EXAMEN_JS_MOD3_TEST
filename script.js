@@ -1,12 +1,11 @@
-
-
-
+// Declaracion de variables
 let colors = generateRandomColors()
 let cuadrados = document.querySelectorAll(".square")
 let message = document.querySelector("#message")
 let reset = document.querySelector("#reset")
 let easy = document.querySelector("#easy")
 
+//Funcion de reciclaje (recomendacion de la pauta)
 function requestFunction(params) {
    for (let i = 0; i < cuadrados.length; i++) {
       cuadrados[i].style.background = colors[i]
@@ -18,10 +17,12 @@ function requestFunction(params) {
 requestFunction()
 
 let rgb = document.querySelector("#rgb")
+//Asignacion a PickedColor
 let pickedColor = pickColor()
-//console.log(colors[3])
+//Asignacion al titulo de PickedColor
 rgb.textContent = pickedColor
 
+//Comparacion del valor del click con el color seleccionado por el usuario
 function comparative(params) {
 
    for (let i = 0; i < cuadrados.length; i++) {
@@ -33,10 +34,10 @@ function comparative(params) {
             rgb.style = `background: ${valorClick.style.backgroundColor} `
             changeColors(valorClick.style.backgroundColor)
             reset.textContent = "Play Again?"
-          }
+         }
          else {
             console.log("perdio")
-            valorClick.style.backgroundColor = "#232323"
+            valorClick.style = "background-color:#232323; transition: 0.5s;"
             message.textContent = "Intentelo Nuevamente"
          }
       }
@@ -45,7 +46,7 @@ function comparative(params) {
    }
 }
 comparative()
-
+//Cambio de colores
 function changeColors(color) {
    for (let i = 0; i < cuadrados.length; i++) {
       cuadrados[i].style.backgroundColor = color
@@ -53,7 +54,7 @@ function changeColors(color) {
 }
 
 changeColors()
-
+//Funcion random para PickedcOLOR
 function pickColor(params) {
    let rand = Math.floor(Math.random() * colors.length)
    let arreglo = colors[rand]
@@ -61,6 +62,7 @@ function pickColor(params) {
 }
 pickColor()
 
+//Asigna el color rgb en el arrego y es utilizada en generateRandomcOLORS
 function randomColor() {
    var color1 = Math.floor(Math.random() * 256)
    var color2 = Math.floor(Math.random() * 256)
@@ -70,7 +72,7 @@ function randomColor() {
 }
 
 randomColor()
-
+//Genera los rgv y los agrega a cada indice del arreglo en 6 elementos, luego se asiga a la variable colors solicitado en la pauta, esto genera los colores para hard
 function generateRandomColors() {
    let nuevosColores = []
 
@@ -79,7 +81,16 @@ function generateRandomColors() {
    }
    return nuevosColores
 }
+//Genera los colores para Easy
+function generateRandomColors2() {
+   let nuevosColores = []
 
+   for (var i = 0; i < 3; i++) {
+      nuevosColores[i] = randomColor()
+   }
+   return nuevosColores
+}
+//Funcion refactorizada para su utilizacion en el resetear
 function reset2(params) {
    for (var i = 0; i < cuadrados.length; i++) {
       if (cuadrados[i]) {
@@ -93,25 +104,29 @@ function reset2(params) {
    reset.textContent = "Nuevos Colores"
    message.textContent = ""
 }
-
+//Resetea los colores, el titulo, se cambian los colores
 function resetear() {
    reset.addEventListener("click", function (params) {
       colors = generateRandomColors()
       pickedColor = pickColor()
-    rgb.textContent = pickedColor
+      rgb.textContent = pickedColor
       reset2()
    })
 }
 
 resetear()
+//Se ocultan los cuadrados al hacer click en easy
+let ocultar = document.getElementById("ocultar")
+//Se invoca a la funcion generateRandomColors2 para que haga un random en las primeras 3 posiciones del arreglo
 easy.addEventListener("click", function (params) {
-   colors = generateRandomColors(3)
+   colors = generateRandomColors2()
    pickedColor = pickColor()
    rgb.textContent = pickedColor
+   reset.textContent = "Nuevos Colores"
    reset2()
    for (let i = 0; i < cuadrados.length - 3; i++) {
       if (cuadrados[i]) {
-         cuadrados[i].style.display = "none"
+         ocultar.style = "visibility: hidden"
          cuadrados[i].style.background = colors[i]
 
       }
